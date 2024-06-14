@@ -3,13 +3,13 @@ import {GoogleAuthProvider, getAuth, signInWithPopup , createUserWithEmailAndPas
 import {getFirestore, doc, getDoc, setDoc} from "firebase/firestore"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCoiXgW2Ic2HuSeMgq-cbnGb7cX8BmavPc",
-    authDomain: "crwn-clothing-88c86.firebaseapp.com",
-    projectId: "crwn-clothing-88c86",
-    storageBucket: "crwn-clothing-88c86.appspot.com",
-    messagingSenderId: "339283618637",
-    appId: "1:339283618637:web:01c175807e5369f1ce2504"
-  };
+  apiKey: `${process.env.apiKey}`,
+  authDomain: `${process.env.authDomain}`,
+  projectId: `${process.env.projectId}`,
+  storageBucket: `${process.env.storageBucket}`,
+  messagingSenderId: `${process.env.messagingSenderId}`,
+  appId: `${process.env.appId}`,
+  } ;
   
   // Initialize Firebase
   const firebaseapp = initializeApp(firebaseConfig);

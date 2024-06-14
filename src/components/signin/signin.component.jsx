@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {  createuserdoc, googlesigninwithpop, signinAuthuserandpassword } from "../../utils/firebase.utils";
 import Form from "../form/form.component";
 import Button from "../button/button.component";
 import './signin.style.scss';
+import { Usercontext } from "../../context/user.context";
 
 
 const defaultformvalues = {
@@ -12,6 +13,7 @@ const defaultformvalues = {
     
 };
 
+
 const Signinform = () =>{
 
     const [formvalues, setformvalues] = useState(defaultformvalues);
@@ -20,15 +22,15 @@ const Signinform = () =>{
     const resetform = () => {
         setformvalues(defaultformvalues);
     }
-
+    const { setusercon } = useContext(Usercontext);
     const submithandler = async (event) =>{
 
         event.preventDefault();
 
 
         try{
-            await signinAuthuserandpassword(email, password);
-            
+           const {user} = await signinAuthuserandpassword(email, password);
+           setusercon(user)
             resetform();
         }
         catch (e) {

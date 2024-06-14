@@ -1,15 +1,12 @@
 import { initializeApp } from "firebase/app";
-import {GoogleAuthProvider, getAuth, signInWithPopup , createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth"
+import {GoogleAuthProvider, getAuth, signInWithPopup , createUserWithEmailAndPassword , signInWithEmailAndPassword, signOut} from "firebase/auth"
 import {getFirestore, doc, getDoc, setDoc} from "firebase/firestore"
+import {firebase} from "../env.js"
 
-const firebaseConfig = {
-  apiKey: `${process.env.apiKey}`,
-  authDomain: `${process.env.authDomain}`,
-  projectId: `${process.env.projectId}`,
-  storageBucket: `${process.env.storageBucket}`,
-  messagingSenderId: `${process.env.messagingSenderId}`,
-  appId: `${process.env.appId}`,
-  } ;
+
+
+
+const firebaseConfig = firebase;
   
   // Initialize Firebase
   const firebaseapp = initializeApp(firebaseConfig);
@@ -56,3 +53,5 @@ const firebaseConfig = {
     
     return await signInWithEmailAndPassword(auth,email,password);
 }
+
+export const signoutAuthuser = async () => await signOut(auth);

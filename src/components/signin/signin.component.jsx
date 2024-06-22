@@ -1,8 +1,8 @@
 import {  useState } from "react";
 import {   googlesigninwithpop, signinAuthuserandpassword } from "../../utils/firebase.utils";
 import Form from "../form/form.component";
-import Button from "../button/button.component";
-import './signin.style.scss';
+import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
+import {SignInContainer, ButtonsContainer} from './signin.style'
 
 
 
@@ -54,7 +54,7 @@ const Signinform = () =>{
 
 
     return(
-        <div className='sign-up-container'>
+        <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
             <form  onSubmit={submithandler}>
@@ -64,15 +64,15 @@ const Signinform = () =>{
 
             <Form type= 'password' name="password" value={password} onChange={onchangehandler} label ='Password' required/>
 
-            <div className='buttons-container'>
+            <ButtonsContainer>
             <Button type = 'submit' >Sign In</Button>
-            <Button type = 'button' buttonType='google' onClick={loggoogle}>sign in with google </Button> 
-            </div>
+            <Button type = 'button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={loggoogle}>sign in with google </Button> 
+            </ButtonsContainer>
 
             
 
             </form>
-        </div>
+        </SignInContainer>
     );
 
 

@@ -1,13 +1,22 @@
 import { initializeApp } from "firebase/app";
 import {GoogleAuthProvider, getAuth, signInWithPopup , createUserWithEmailAndPassword , signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth"
 import {getFirestore, doc, getDoc, setDoc, writeBatch, collection, query, getDocs} from "firebase/firestore"
-import {firebase} from "../env.js"
-import { Await } from "react-router-dom";
 
 
 
 
-const firebaseConfig = firebase;
+const {REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN, REACT_APP_PROJECT_ID, REACT_APP_STORAGE_BUCKET, REACT_APP_MESSAGING_SENDER_ID, REACT_APP_APP_ID} =process.env
+
+const firebaseConfig = {
+  apiKey: REACT_APP_API_KEY,
+    authDomain: REACT_APP_AUTH_DOMAIN,
+    projectId: REACT_APP_PROJECT_ID,
+    storageBucket: REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: REACT_APP_MESSAGING_SENDER_ID,
+    appId: REACT_APP_APP_ID
+}
+
+console.log(firebaseConfig)
   
   // Initialize Firebase
   const firebaseapp = initializeApp(firebaseConfig);
